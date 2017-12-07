@@ -1,0 +1,47 @@
+Zadatak 1.
+  Pronaci najstarijeg clana posade:
+
+SELECT CONCAT(first_name, ' ', last_name) as name 
+FROM pilot
+ORDER BY age DESC
+LIMIT 0,1
+
+Darko Simunovic
+
+
+Zadatak 2.
+  Pronaci n-tog clana posade (po godinama)_
+
+SELECT CONCAT(first_name, ' ', last_name) as name 
+FROM pilot
+ORDER BY age DESC
+LIMIT N,1 //N = broj clana (pocevsi od 0)
+
+
+Zadatak 3.
+  Pronaci najiskusnijeg clana posade:
+
+SELECT CONCAT(first_name, ' ', last_name) as name, count(aircraft.id) as planes
+FROM  pilot 
+JOIN  pilot_aircraft ON pilot.id = pilot_aircraft.aid 
+JOIN  aircraft ON pilot_aircraft.aid = aircraft.id 
+GROUP BY pilot.id
+LIMIT 0,1
+
+Ivan Ivanic
+2
+
+
+Zadatak 4.
+  Pronaci najmanje iskusnog clana posade:
+
+SELECT CONCAT(first_name, ' ', last_name) as name, count(aircraft.id) as planes
+FROM  pilot
+LEFT JOIN  pilot_aircraft ON pilot.id = pilot_aircraft.pid 
+LEFT JOIN  aircraft ON pilot_aircraft.aid = aircraft.id 
+GROUP BY pilot.id
+ORDER BY planes
+LIMIT 0,1
+
+Marko Roglic
+1
